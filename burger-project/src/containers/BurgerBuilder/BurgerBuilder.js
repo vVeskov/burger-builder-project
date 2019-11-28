@@ -26,7 +26,6 @@ class BurgerBuilder extends React.Component {
     }
 
     componentDidMount() {
-        console.log(this.props)
         axios.get('https://react-burger-builder-2e795.firebaseio.com/ingredients.json').then(response => {
             this.setState({
                 ingredients: response.data
@@ -82,10 +81,9 @@ class BurgerBuilder extends React.Component {
         const queryParams = [];
         console.log(this.state.ingredients)
         for (let i in this.state.ingredients) {
+            console.log(i)
             queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i]));
         }
-
-        console.log(queryParams)
 
         const queryString = queryParams.join('&');
 

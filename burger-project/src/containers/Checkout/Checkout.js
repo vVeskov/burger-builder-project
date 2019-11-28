@@ -1,5 +1,7 @@
-import React, { Fragment, Component } from 'react'
+import React, { Component } from 'react'
+import { Route } from 'react-router-dom';
 import CheckoutSummary from '../../components/Order/CheckoutSummary/CheckoutSummary'
+import ContactData from '../Checkout/ContactData/ContactData';
 
 class Checkout extends Component {
     state = {
@@ -40,6 +42,9 @@ class Checkout extends Component {
                     ingredients={this.state.ingredients}
                     checkoutCanceled={this.checkoutCanceledHandler}
                     checkoutContinued={this.checkoutContinuedHandler} />
+
+                <ContactData></ContactData>
+
             </div>
         )
     }
