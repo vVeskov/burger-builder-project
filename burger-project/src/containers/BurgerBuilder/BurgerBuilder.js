@@ -48,7 +48,6 @@ class BurgerBuilder extends React.Component {
     }
 
     purchaseContinueHandler = () => {
-
         const queryParams = [];
         console.log(this.state.ingredients)
         for (let i in this.state.ingredients) {
@@ -56,9 +55,8 @@ class BurgerBuilder extends React.Component {
             queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i]));
         }
         queryParams.push('price=' + this.state.totalPrice)
+        console.log(queryParams)
         const queryString = queryParams.join('&');
-
-
         this.props.history.push({
             pathname: '/checkout',
             search: '?' + queryString

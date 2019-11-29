@@ -2,10 +2,6 @@ import React, { Fragment } from 'react';
 import Button from '../../UI/Button/Button.js'
 class orderSummary extends React.Component {
 
-    componentDidUpdate() {
-        console.log('Order Sum will update !')
-    }
-
     render() {
 
         const ingredientSummary = Object.keys(this.props.ingredients)
