@@ -25,3 +25,8 @@
     color: #944317;
     background: white;
 }
+
+.Button:disabled {
+    color: #ccc;
+    cursor: not-allowed;
+}
