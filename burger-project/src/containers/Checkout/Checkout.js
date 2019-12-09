@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import CheckoutSummary from '../../components/Order/CheckoutSummary/CheckoutSummary'
 import ContactData from '../Checkout/ContactData/ContactData';
 
@@ -6,6 +6,7 @@ class Checkout extends Component {
     state = {
         ingredients: null,
         price: 0,
+        isClicked: false
     }
 
     componentWillMount() {
@@ -28,22 +29,31 @@ class Checkout extends Component {
     }
 
     checkoutCanceledHandler = () => {
-        console.log(this.props)
         this.props.history.goBack();
     }
 
     checkoutContinuedHandler = () => {
+        this.setState({
+            isClicked: true
+        })
         this.props.history.replace('/checkout/contact-data')
     }
 
     render() {
         return (
             <div>
-                <CheckoutSummary
-                    ingredients={this.state.ingredients}
-                    checkoutCanceled={this.checkoutCanceledHandler}
-                    checkoutContinued={this.checkoutContinuedHandler} />
-                <ContactData ingredients={this.state.ingredients} price={this.state.price} />
+                {
+                    !this.state.isClicked ?
+                        <Fragment>
+                            <CheckoutSummary
+                                ingredients={this.state.ingredients}
+                                checkoutCanceled={this.checkoutCanceledHandler}
+                                checkoutContinued={this.checkoutContinuedHandler} />
+                            <ContactData ingredients={this.state.ingredients} price={this.state.price} />
+                        </Fragment> : <ContactData ingredients={this.state.ingredients} price={this.state.price} />
+
+                }
+
             </div>
         )
     }

@@ -6,8 +6,6 @@ import Checkout from './containers/Checkout/Checkout';
 import Orders from './containers/Orders/Orders';
 
 class App extends React.Component {
-
-
   render() {
     return (
       <div>
