@@ -124,7 +124,6 @@ class ContactData extends Component {
     }
 
     checkValidity = (value, rules) => {
-        console.log(rules);
         let isValid = true;
         if (rules.required) {
             isValid = value.trim() !== '' && isValid
@@ -157,7 +156,7 @@ class ContactData extends Component {
         for (let inputIdentifier in updatedOrderForm) {
             formIsValid = updatedOrderForm[inputIdentifier].valid && formIsValid
         }
-        console.log(formIsValid)
+
         this.setState({ orderForm: updatedOrderForm, formIsValid: formIsValid })
     }
 
