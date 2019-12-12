@@ -6,6 +6,7 @@ import './ContactData.css';
 import Button from '../../../components/UI/Button/Button';
 import Spinner from '../../../components/UI/Spinner/Spinner';
 import Input from '../../../components/UI/Input/Input';
+import * as actions from '../../../store/actions/index';
 
 class ContactData extends Component {
 
@@ -92,7 +93,7 @@ class ContactData extends Component {
                 touched: false,
             },
         },
-        loading: false
+        // loading: false
     }
 
     orderHandler = (event) => {
@@ -111,17 +112,7 @@ class ContactData extends Component {
             orderData: formData
 
         }
-        axios.post('/orders.json', order).then(response => {
-            this.setState({
-                loading: false,
-            })
-            this.props.history.push('/');
-        }).catch(error => {
-            this.setState({
-                loading: false,
-                purchasing: false,
-            })
-        })
+        this.props.onOrderBurger(order)
 
     }
 
@@ -191,7 +182,7 @@ class ContactData extends Component {
             </form>
         );
 
-        if (this.state.loading) {
+        if (this.props.loading) {
             form = <Spinner />
         }
         return (
@@ -207,7 +198,12 @@ const mapStateToProps = state => {
     return {
         ings: state.ingredients,
         price: state.totalPrice,
+        loading: state.loading,
     }
 }
 
-export default connect(mapStateToProps)(withRouter(ContactData));
+const mapDispatchToProps = dispatch => {
+    return { onOrderBurger: (orderData) => dispatch(actions.purchaseBurger(orderData)) }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(ContactData));
