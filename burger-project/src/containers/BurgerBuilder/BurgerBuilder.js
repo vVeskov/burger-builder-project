@@ -6,15 +6,14 @@ import Modal from '../../components/UI/Modal/Modal';
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
-import axios from '../../../src/axios-order';
+import axios from '../../axios-order';
 import * as burgerBuilderActions from '../../store/actions/index';
 
 
 class BurgerBuilder extends React.Component {
     state = {
         purchasing: false,
-        loading: false,
-        error: false
+
 
     }
 
@@ -56,9 +55,9 @@ class BurgerBuilder extends React.Component {
         }
         let orderSummary = null;
 
-        if (this.state.loading) {
-            orderSummary = <Spinner />
-        }
+        // if (this.state.loading) {
+        //     orderSummary = <Spinner />
+        // }
         let burger = this.state.error ? <p>Ingredients can`t be loaded!</p> : <Spinner />
 
         if (this.props.ings) {
