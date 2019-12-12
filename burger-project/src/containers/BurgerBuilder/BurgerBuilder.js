@@ -13,12 +13,10 @@ import * as burgerBuilderActions from '../../store/actions/index';
 class BurgerBuilder extends React.Component {
     state = {
         purchasing: false,
-
-
     }
 
     componentDidMount() {
-
+        this.props.onInitIngredients();
     }
 
     purchaseHandler = () => {
@@ -58,7 +56,7 @@ class BurgerBuilder extends React.Component {
         // if (this.state.loading) {
         //     orderSummary = <Spinner />
         // }
-        let burger = this.state.error ? <p>Ingredients can`t be loaded!</p> : <Spinner />
+        let burger = this.props.error ? <p>Ingredients can`t be loaded!</p> : <Spinner />
 
         if (this.props.ings) {
             burger = (
@@ -99,6 +97,7 @@ const mapStateToProps = (state) => {
     return {
         ings: state.ingredients,
         price: state.totalPrice,
+        error: state.error
     }
 }
 
@@ -109,6 +108,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         onIngredientRemove: (ingName) => {
             dispatch(burgerBuilderActions.removeIngredient(ingName))
+        },
+        onInitIngredients: () => {
+            dispatch(burgerBuilderActions.initIngredients())
         }
     }
 }
