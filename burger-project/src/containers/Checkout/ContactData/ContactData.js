@@ -98,14 +98,14 @@ class ContactData extends Component {
 
     orderHandler = (event) => {
         event.preventDefault();
-        this.setState({
-            loading: true,
-        })
+        // this.setState({
+        //     loading: true,
+        // })
+
         const formData = {};
         for (let formElementIdentifier in this.state.orderForm) {
             formData[formElementIdentifier] = this.state.orderForm[formElementIdentifier].value
         }
-
         const order = {
             ingredients: this.props.ings,
             price: this.props.price,
@@ -113,7 +113,6 @@ class ContactData extends Component {
 
         }
         this.props.onOrderBurger(order)
-
     }
 
     checkValidity = (value, rules) => {
@@ -197,7 +196,7 @@ class ContactData extends Component {
 const mapStateToProps = state => {
     return {
         ings: state.burgerBuilder.ingredients,
-        price: state.burgerBuilder.totalPrice,
+        // price: state.burgerBuilder.totalPrice,
         loading: state.order.loading,
     }
 }

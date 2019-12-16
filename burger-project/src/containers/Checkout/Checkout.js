@@ -2,8 +2,15 @@ import React, { Component, Fragment } from 'react'
 import { Redirect } from 'react-router-dom'
 import CheckoutSummary from '../../components/Order/CheckoutSummary/CheckoutSummary'
 import ContactData from '../Checkout/ContactData/ContactData';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+import * as actions from '../../store/actions/index';
+
 class Checkout extends Component {
+
+    // componentWillMount() {
+    //     this.props.onInitPurchase()
+    // }
+
     state = {
         isClicked: false
     }
@@ -40,8 +47,10 @@ class Checkout extends Component {
     render() {
         let summary = <Redirect to='/' />
         if (this.props.ings) {
+            const purchasedRedirect = this.props.purchased ? <Redirect to='/' /> : null
             summary = (
                 <div>
+                    {purchasedRedirect}
                     {
                         !this.state.isClicked ?
                             <Fragment>
@@ -51,9 +60,7 @@ class Checkout extends Component {
                                     checkoutContinued={this.checkoutContinuedHandler} />
                                 <ContactData ingredients={this.state.ingredients} price={this.props.price} />
                             </Fragment> : <ContactData ingredients={this.state.ingredients} price={this.props.price} />
-
                     }
-
                 </div>
             )
         }
@@ -67,7 +74,14 @@ const mapStateToProps = state => {
     return {
         ings: state.burgerBuilder.ingredients,
         price: state.burgerBuilder.totalPrice,
+        purchased: state.order.purchased,
     }
 }
+
+// const mapDispatchToProps = dispatch => {
+//     return {
+//         onInitPurchase: () => dispatch(actions.purchaseInit()),
+//     }
+// }
 
 export default connect(mapStateToProps)(Checkout);
