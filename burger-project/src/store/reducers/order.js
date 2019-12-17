@@ -27,8 +27,6 @@ const reducer = (state = initialState, action) => {
                 id: action.orderId
             }
 
-            console.log(newOrder)
-            console.log(state.orders)
             return {
                 ...state,
                 loading: false,

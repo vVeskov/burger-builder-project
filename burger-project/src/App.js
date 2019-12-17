@@ -9,6 +9,7 @@ import Checkout from './containers/Checkout/Checkout';
 import Orders from './containers/Orders/Orders';
 import burgerBuilderReducer from './store/reducers/burgerBuilder';
 import orderReducer from './store/reducers/order';
+import Auth from './containers/Auth/Auth';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -28,6 +29,7 @@ class App extends React.Component {
               <Switch>
                 <Route path="/" exact component={BurgerBuilder} />
                 <Route path="/orders" component={Orders} />
+                <Route path="/auth" component={Auth} />
                 <Route path="/checkout" component={Checkout} />
               </Switch>
             </Layout>

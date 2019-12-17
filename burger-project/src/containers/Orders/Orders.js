@@ -8,14 +8,12 @@ import Spinner from '../../components/UI/Spinner/Spinner';
 
 class Orders extends React.Component {
 
-
     componentDidMount() {
         this.props.onFetchOrders();
     }
 
     render() {
         let orders = <Spinner></Spinner>
-        console.log(this.props.orders)
         if (!this.props.loading) {
             orders = this.props.orders.map(order => (
                 <Order key={order.id} ingredients={order.ingredients} price={order.price} />
