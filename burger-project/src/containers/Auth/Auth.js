@@ -104,6 +104,7 @@ class Auth extends Component {
                     {form}
                     <Button btnType="Success">Submit</Button>
                 </form>
+                <Button btnType="Danger">Switch to Sign In</Button>
             </div>
         )
     }
@@ -111,7 +112,7 @@ class Auth extends Component {
 
 const mapDispatchTopProps = dispatch => {
     return {
-        onAuth: (email, password) => dispatch(actions.auth())
+        onAuth: (email, password) => dispatch(actions.auth(email, password))
     }
 }
 
