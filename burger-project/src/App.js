@@ -10,6 +10,7 @@ import Orders from './containers/Orders/Orders';
 import burgerBuilderReducer from './store/reducers/burgerBuilder';
 import orderReducer from './store/reducers/order';
 import Auth from './containers/Auth/Auth';
+import Logout from './containers/Auth/Logout/Logout';
 import authReducer from './store/reducers/auth'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -32,6 +33,7 @@ class App extends React.Component {
                 <Route path="/" exact component={BurgerBuilder} />
                 <Route path="/orders" component={Orders} />
                 <Route path="/auth" component={Auth} />
+                <Route path="/logout" component={Logout} />
                 <Route path="/checkout" component={Checkout} />
               </Switch>
             </Layout>
