@@ -62,4 +62,11 @@ export const checkAuthTimeOut = (expirationTime) => {
     }
 }
 
+export const setAuthRedirect = (path) => {
+    return {
+        type: actionTypes.SET_AUTH_REDIRECT,
+        path: path
+    }
+}
+
 
