@@ -1,13 +1,22 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import Toolbar from '../../components/Navigation/Toolbar/Toolbar'
 import './Layout.css'
 import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer';
+import * as actions from '../../store/actions/index';
+
 
 class Layout extends React.Component {
 
     state = {
         showSideDrawer: false,
+    }
+
+    componentDidMount() {
+
+        this.props.onTryAutoSignUp();
+
     }
 
     sideDrawerClosedHandler = () => {
@@ -47,5 +56,12 @@ const mapStateToprops = state => {
         isAuthenticated: state.auth.token !== null,
     }
 }
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onTryAutoSignUp: () => {
+            dispatch(actions.authCheckState())
+        }
+    }
+}
 
-export default connect(mapStateToprops)(Layout);
+export default withRouter(connect(mapStateToprops, mapDispatchToProps)(Layout));

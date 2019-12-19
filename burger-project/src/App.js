@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import thunk from 'redux-thunk';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
@@ -11,7 +12,8 @@ import burgerBuilderReducer from './store/reducers/burgerBuilder';
 import orderReducer from './store/reducers/order';
 import Auth from './containers/Auth/Auth';
 import Logout from './containers/Auth/Logout/Logout';
-import authReducer from './store/reducers/auth'
+import authReducer from './store/reducers/auth';
+import * as actions from './store/actions/index';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -23,6 +25,7 @@ const rootReducer = combineReducers({
 const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)))
 
 class App extends React.Component {
+
   render() {
     return (
       <div>
@@ -43,7 +46,7 @@ class App extends React.Component {
       </div >
     );
   }
-
 }
+
 
 export default App;
