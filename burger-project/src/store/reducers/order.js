@@ -18,7 +18,6 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 loading: true,
-
             }
 
         case actionTypes.PURCHASE_BURGER_SUCCESS:
@@ -26,7 +25,6 @@ const reducer = (state = initialState, action) => {
                 ...action.orderData,
                 id: action.orderId
             }
-
             return {
                 ...state,
                 loading: false,

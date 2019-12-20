@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import thunk from 'redux-thunk';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
@@ -13,7 +12,6 @@ import orderReducer from './store/reducers/order';
 import Auth from './containers/Auth/Auth';
 import Logout from './containers/Auth/Logout/Logout';
 import authReducer from './store/reducers/auth';
-import * as actions from './store/actions/index';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
