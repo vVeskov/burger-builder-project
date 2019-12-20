@@ -14,9 +14,7 @@ class Layout extends React.Component {
     }
 
     componentDidMount() {
-
         this.props.onTryAutoSignUp();
-
     }
 
     sideDrawerClosedHandler = () => {

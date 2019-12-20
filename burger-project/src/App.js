@@ -26,6 +26,7 @@ const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)))
 
 class App extends React.Component {
 
+
   render() {
     return (
       <div>
@@ -42,11 +43,11 @@ class App extends React.Component {
             </Layout>
           </BrowserRouter>
         </Provider>
-
       </div >
     );
   }
 }
+
 
 
 export default App;
