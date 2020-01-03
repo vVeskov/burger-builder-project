@@ -1,5 +1,6 @@
 import React from 'react';
 import thunk from 'redux-thunk';
+import createSagaMiddleware from 'redux-saga';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
@@ -12,6 +13,8 @@ import orderReducer from './store/reducers/order';
 import Auth from './containers/Auth/Auth';
 import Logout from './containers/Auth/Logout/Logout';
 import authReducer from './store/reducers/auth';
+import { logoutSaga } from './store/sagas/auth';
+
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -20,8 +23,10 @@ const rootReducer = combineReducers({
   order: orderReducer,
   auth: authReducer
 })
-const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)))
 
+const sagaMiddleWare = createSagaMiddleware();
+const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk, sagaMiddleWare)))
+sagaMiddleWare.run(logoutSaga)
 class App extends React.Component {
 
 
