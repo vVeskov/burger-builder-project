@@ -14,4 +14,4 @@ const NavigationItems = (props) => {
     )
 }
 
-export default NavigationItems
+export default NavigationItems;
